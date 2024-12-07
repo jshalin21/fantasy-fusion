@@ -16,7 +16,7 @@ const Login: React.FC = () => {
       navigate("/home"); // Navigate to the home page on successful login
     } catch (err: any) {
       console.error("Error during login:", err.message);
-      setError(err.message); // Set the error message to display to the user
+      setError(err.message); // Set the error message to display to the usersd
     }
   };
 
