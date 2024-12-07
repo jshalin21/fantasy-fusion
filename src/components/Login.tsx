@@ -23,7 +23,7 @@ const Login: React.FC = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h2>Fantas Fusion Login</h2>
+        <h2>Fantasy Fusion Login</h2>
         <p>Enter your credentials to access your account</p>
         {error && <p className="error-message">{error}</p>} {/* Show error if any */}
         <input
