@@ -1,13 +1,432 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+button {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+button:hover {
+  opacity: 0.9;
+}
+
+input {
+  padding: 15px;
+  margin: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #282828;
+  color: white;
+  font-size: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.header {
+  margin: 20px 0;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.card {
+  background-color: #282828;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  text-align: left;
+  cursor: pointer;
+  width: 80%;
+  max-width: 800px;
+}
+
+.card:hover {
+  background-color: #333333;
+}
+
+.navbar {
+  padding: 20px;
+  background-color: #1db954;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+}
+
+.page-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.full-width {
+  width: 90%;
+  max-width: 1200px;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #1db954;
+  color: white;
+  font-size: 18px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar button {
+  background-color: white;
+  color: #1db954;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.navbar button:hover {
+  opacity: 0.8;
+}
+
+
+/* Body styling for the dark theme */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Centered card container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #121212;
+}
+
+/* Login card */
+.login-card {
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  text-align: center;
+}
+
+/* Header for login card */
+.login-card h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Subtext below the title */
+.login-card p {
+  font-size: 14px;
+  color: #bbbbbb;
+  margin-bottom: 30px;
+}
+
+/* Input fields styling */
+.login-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #282828;
+  color: white;
+  font-size: 14px;
+  outline: none;
+}
+
+/* Input focus effect */
+.login-card input:focus {
+  border: 1px solid #1db954;
+}
+
+/* Buttons styling */
+.login-card button {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Button hover effect */
+.login-card button:hover {
+  background-color: #17a34a;
+}
+
+/* Link for "Forgot Password?" */
+.login-card .forgot-password {
+  display: block;
+  margin-top: 15px;
+  font-size: 12px;
+  color: #bbbbbb;
+  text-decoration: none;
+}
+
+.login-card .forgot-password:hover {
+  color: #ffffff;
+}
+
+
+/* Player list container */
+.player-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  width: 100%;
+}
+
+/* Individual player items */
+.player-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: #282828;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Player image */
+.player-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+/* Player info */
+.player-info h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.player-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #bbbbbb;
+}
+
+/* Search bar styling */
+.full-width {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #282828;
+  color: white;
+  font-size: 14px;
+  outline: none;
+}
+
+.full-width:focus {
+  border: 1px solid #1db954;
+}
+
+
+/* General styling */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Navbar styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #1db954;
+  color: white;
+  font-size: 18px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.navbar a:hover {
+  opacity: 0.8;
+}
+
+/* Log In and Sign Up container */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #121212;
+}
+
+.auth-card {
+  background-color: #282828;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  text-align: center;
+}
+
+.auth-card h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.auth-card p {
+  font-size: 14px;
+  color: #bbbbbb;
+  margin-bottom: 20px;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333333;
+  color: white;
+  font-size: 14px;
+}
+
+.auth-card input:focus {
+  border: 1px solid #1db954;
+}
+
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1db954;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.auth-card button:hover {
+  background-color: #17a34a;
+}
+
+.auth-card a {
+  color: #1db954;
+  font-size: 12px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.auth-card a:hover {
+  color: #17a34a;
+}
+
+
+/* Page container styling */
+.page-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* Form container */
+.form-container {
+  background-color: #282828;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Form styling */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-field {
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333333;
+  color: white;
+  font-size: 16px;
+  width: 100%;
+}
+
+.input-field:focus {
+  border: 1px solid #1db954;
+  outline: none;
+}
+
+/* Button styling */
+.button {
+  background-color: #1db954;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.error-message {
+  color: red;
+  margin: 10px 0;
+  font-size: 0.9rem;
 }
