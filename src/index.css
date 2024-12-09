@@ -1,5 +1,5 @@
 button {
-  background-color: #1db954;
+  background-color: #203e98; /* NFL Blue */
   color: white;
   border: none;
   padding: 15px 20px;
@@ -9,6 +9,7 @@ button {
 }
 
 button:hover {
+  background-color: #122c70; /* Darker NFL Blue */
   opacity: 0.9;
 }
 
@@ -17,9 +18,9 @@ input {
   margin: 10px 0;
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid #333;
+  border: 1px solid #950b0b; /* NFL Red */
   border-radius: 5px;
-  background-color: #282828;
+  background-color: #282828; /* Dark Gray */
   color: white;
   font-size: 16px;
 }
@@ -36,10 +37,11 @@ input {
   margin: 20px 0;
   font-size: 32px;
   font-weight: bold;
+  color: #a5acaf; /* Metallic Silver */
 }
 
 .card {
-  background-color: #282828;
+  background-color: #282828; /* Dark Gray */
   padding: 20px;
   margin: 10px 0;
   border-radius: 10px;
@@ -47,19 +49,14 @@ input {
   cursor: pointer;
   width: 80%;
   max-width: 800px;
+  border: 1px solid #203e98; /* NFL Blue */
 }
 
 .card:hover {
-  background-color: #333333;
+  background-color: #333333; /* Lighter Gray */
 }
 
-.navbar {
-  padding: 20px;
-  background-color: #1db954;
-  color: white;
-  text-align: center;
-  font-size: 24px;
-}
+
 
 .page-container {
   padding: 20px;
@@ -81,34 +78,6 @@ input {
 .full-width {
   width: 90%;
   max-width: 1200px;
-}
-
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #1db954;
-  color: white;
-  font-size: 18px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.navbar button {
-  background-color: white;
-  color: #1db954;
-  padding: 8px 15px;
-  border-radius: 5px;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.navbar button:hover {
-  opacity: 0.8;
 }
 
 
@@ -168,12 +137,12 @@ body {
 
 /* Input focus effect */
 .login-card input:focus {
-  border: 1px solid #1db954;
+  border: 1px solid #950b0b;
 }
 
 /* Buttons styling */
 .login-card button {
-  background-color: #1db954;
+  background-color: #a00f0f;
   color: white;
   border: none;
   padding: 12px;
@@ -186,7 +155,7 @@ body {
 
 /* Button hover effect */
 .login-card button:hover {
-  background-color: #17a34a;
+  background-color: #a11212;
 }
 
 /* Link for "Forgot Password?" */
@@ -257,7 +226,7 @@ body {
 }
 
 .full-width:focus {
-  border: 1px solid #1db954;
+  border: 1px solid #9f0909;
 }
 
 
@@ -267,30 +236,6 @@ body {
   font-family: Arial, sans-serif;
   background-color: #121212;
   color: #ffffff;
-}
-
-/* Navbar styling */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background-color: #1db954;
-  color: white;
-  font-size: 18px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
-}
-
-.navbar a:hover {
-  opacity: 0.8;
 }
 
 /* Log In and Sign Up container */
@@ -336,7 +281,7 @@ body {
 }
 
 .auth-card input:focus {
-  border: 1px solid #1db954;
+  border: 1px solid #c10909;
 }
 
 .auth-card button {
@@ -344,18 +289,18 @@ body {
   padding: 12px;
   border: none;
   border-radius: 5px;
-  background-color: #1db954;
+  background-color: #d6170d;
   color: white;
   font-size: 16px;
   cursor: pointer;
 }
 
 .auth-card button:hover {
-  background-color: #17a34a;
+  background-color: #a31717;
 }
 
 .auth-card a {
-  color: #1db954;
+  color: #b60606;
   font-size: 12px;
   text-decoration: none;
   display: inline-block;
@@ -363,7 +308,7 @@ body {
 }
 
 .auth-card a:hover {
-  color: #17a34a;
+  color: #a31717;
 }
 
 
@@ -406,13 +351,13 @@ body {
 }
 
 .input-field:focus {
-  border: 1px solid #1db954;
+  border: 1px solid #9d0606;
   outline: none;
 }
 
 /* Button styling */
 .button {
-  background-color: #1db954;
+  background-color: #b91d1d;
   color: white;
   border: none;
   padding: 15px 20px;

@@ -12,13 +12,20 @@ const Login: React.FC = () => {
   const handleLogin = async () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log("Login successful:", userCredential.user);
-      navigate("/home"); // Navigate to the home page on successful login
+      const firebaseUser = userCredential.user;
+  
+      console.log("Firebase user logged in:", firebaseUser);
+  
+      // Store the email locally for fetching profile data
+      localStorage.setItem("email", email);
+  
+      navigate("/home");
     } catch (err: any) {
-      console.error("Error during login:", err.message);
-      setError(err.message); // Set the error message to display to the usersd
+      console.error("Error during login:", err);
+      setError(err.message);
     }
   };
+  
 
   return (
     <div className="auth-container">

@@ -1,32 +1,97 @@
-import React from "react";
+import "../Home.css";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
-import { useNavigate } from "react-router-dom";
+import NewLeague from "./NewLeague";
+
+interface League {
+  _id: string;
+  name: string;
+  description: string;
+  players: string[];
+}
 
 const Home: React.FC = () => {
-  const navigate = useNavigate();
-  const leagues: string[] = ["League 1", "League 2", "League 3"];
+  const [leagues, setLeagues] = useState<League[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = async (refresh: boolean) => {
+    setIsModalOpen(false);
+    if (refresh) await fetchLeagues(); // Refresh leagues after creating a new league
+  };
+
+  const fetchLeagues = async () => {
+    const email = localStorage.getItem("email"); // Get email from localStorage
+
+    if (!email) {
+      setError("You must be logged in to view leagues.");
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:4000/api/leagues?email=${email}`);
+      const data = await response.json();
+
+      if (response.ok) {
+        setLeagues(data.data); // Set the fetched leagues
+      } else {
+        setError(data.message || "Failed to fetch leagues.");
+      }
+    } catch (err) {
+      setError("An error occurred while fetching leagues.");
+    }
+  };
+
+  useEffect(() => {
+    fetchLeagues();
+  }, []);
 
   return (
     <>
       <Navbar />
-      <div className="page-container">
-        <h2 className="header">Your Leagues</h2>
-        <div className="grid">
-          {leagues.map((league, index) => (
-            <div
-              className="card"
-              key={index}
-              onClick={() => navigate(`/league/${index}`)}
-            >
-              <h3>{league}</h3>
-              <p>Fantasy football league description here...</p>
-            </div>
+      <div className="home-container">
+        <div className="hero-section">
+          <video
+            className="background-video"
+            autoPlay
+            loop
+            muted
+            src="/ff_clips.mp4"
+          ></video>
+          <div className="hero-overlay">
+            <h1 className="home-header">Fantasy Fusion</h1>
+            <p className="hero-description">
+              Bringing all your fantasy leagues together in one place.
+            </p>
+          </div>
+        </div>
+        <div className="leagues-grid">
+          {error && <p className="error-message">{error}</p>}
+          {/* Render each league card */}
+          {leagues.map((league) => (
+            <Link to={`/league/${league._id}`} key={league._id} className="league-card-link">
+              <div className="league-card">
+                <h3 className="league-name">{league.name}</h3>
+                <p className="league-description">{league.description}</p>
+              </div>
+            </Link>
           ))}
         </div>
-        <button className="button" onClick={() => navigate("/new-league")}>
-          Create New League
-        </button>
+        <div className="add-league-wrapper">
+          <button className="add-league-card" onClick={openModal}>
+            <span className="add-league-text">Create New League</span>
+          </button>
+        </div>
       </div>
+
+      {/* Render the NewLeague modal */}
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <NewLeague onClose={closeModal} />
+        </div>
+      )}
     </>
   );
 };
