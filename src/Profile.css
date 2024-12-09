@@ -1,0 +1,78 @@
+/* Center the entire container */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #121212;
+    padding: 20px;
+  }
+  
+  /* Style the profile information box */
+  .profile-box {
+    background-color: #282828;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Profile picture container */
+  .profile-picture-container {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  /* Profile picture styling */
+  .profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #121212;
+  }
+  
+  /* Hidden file input styling */
+  .profile-upload {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+  }
+  
+  /* Header styling */
+  .profile-box h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #e0e0e0; /* Updated text color */
+  }
+  
+  /* Text styling */
+  .profile-box p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #e0e0e0; /* Updated text color */
+  }
+  
+  /* Button styling */
+  .profile-button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .profile-button:hover {
+    background-color: #0056b3;
+  }

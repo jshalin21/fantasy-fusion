@@ -19,15 +19,14 @@ const Player: React.FC = () => {
     4: { name: "Player 4", team: "Team D", points: 20, stats: "Details about Player 4's performance." },
   };
 
-  // Check if id is defined and exists in playerData
   const player = id && playerData[id];
 
   if (!player) {
     return (
       <>
         <Navbar />
-        <div className="page-container">
-          <h2 className="header">Player not found</h2>
+        <div className="page-container" style={styles.pageContainer}>
+          <h2 style={styles.header}>Player not found</h2>
         </div>
       </>
     );
@@ -36,16 +35,49 @@ const Player: React.FC = () => {
   return (
     <>
       <Navbar />
-      <div className="page-container">
-        <h2 className="header">{player.name}</h2>
-        <div className="full-width card">
-          <p>Team: {player.team}</p>
-          <p>Points: {player.points}</p>
-          <p>Stats: {player.stats}</p>
+      <div className="page-container" style={styles.pageContainer}>
+        <h2 style={styles.header}>{player.name}</h2>
+        <div style={styles.card}>
+          <p style={styles.text}>Team: {player.team}</p>
+          <p style={styles.text}>Points: {player.points}</p>
+          <p style={styles.text}>Stats: {player.stats}</p>
         </div>
       </div>
     </>
   );
+};
+
+const styles = {
+  pageContainer: {
+    display: "flex",
+    flexDirection: "column" as const,
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: "100vh",
+    backgroundColor: "#000", // Black background
+    color: "#fff", // White text for contrast
+    padding: "20px",
+  },
+  header: {
+    fontSize: "24px",
+    fontWeight: "bold",
+    color: "#fff",
+    marginBottom: "20px",
+  },
+  card: {
+    maxWidth: "600px",
+    width: "100%",
+    backgroundColor: "#1a1a1a", // Dark card background
+    borderRadius: "10px",
+    padding: "20px",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)",
+    textAlign: "center" as const,
+  },
+  text: {
+    fontSize: "18px",
+    color: "#d1d1d1", // Light gray text
+    margin: "10px 0",
+  },
 };
 
 export default Player;
