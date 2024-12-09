@@ -1,0 +1,146 @@
+/* General Page Styling */
+.page-container {
+    width: 100%; /* Full viewport width */
+    margin: 0 auto; /* Center content */
+    padding: 20px; /* Add spacing */
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* White text */
+    position: relative; /* For absolute positioning of buttons */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+/* Header and Description */
+.header {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px auto;
+    color: #ff4d4d; /* Red for header */
+}
+
+.league-description {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #bbbbbb; /* Light gray for description */
+    margin: 10px auto 30px;
+}
+
+/* Back Button */
+.back-button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+.back-button:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+/* Delete League Button */
+.delete-league-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #d50a0a; /* Bright red for delete */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+.delete-league-button:hover {
+    background-color: #b30909; /* Darker red */
+}
+
+/* Search Input */
+.search-input {
+    width: 90%;
+    max-width: 600px;
+    padding: 10px;
+    margin: 20px auto;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #282828; /* Darker background */
+    color: #ffffff;
+}
+
+.search-input::placeholder {
+    color: #bbbbbb; /* Light gray for placeholder text */
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #ff4d4d; /* Red focus border */
+}
+
+/* League Players */
+.player-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    background-color: transparent; /* Matches the page background */
+}
+
+.player-item {
+    background-color: #1e1e1e; /* Darker background for items */
+    color: #ffffff;
+    width: 80%;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex; /* Use flex layout */
+    justify-content: space-between; /* Push the button to the right */
+    align-items: center; /* Align content vertically */
+    cursor: pointer; /* Make the entire item clickable */
+    gap: 10px; /* Space between player info and buttons */
+    text-decoration: none; /* Remove underline */
+}
+
+.player-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.player-item span {
+    color: #007bff; /* Blue for player links */
+    flex: 1; /* Take up available space */
+}
+
+.player-item span:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+/* Remove Player Button */
+.remove-player-button {
+    padding: 5px 10px;
+    background-color: #d50a0a; /* Red color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-player-button:hover {
+    background-color: #b30909; /* Darker red */
+}

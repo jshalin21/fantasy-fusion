@@ -1,25 +1,43 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {createUserWithEmailAndPassword } from "firebase/auth";
-import {auth} from "../firebase"
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [name, setName] = useState<string>(""); // New state for user's name
   const [error, setError] = useState<string>("");
 
   const handleSignUp = async () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log("User created:", user);
+      const firebaseUser = userCredential.user;
+  
+      console.log("Firebase user created:", firebaseUser);
+  
+      // Save user details to MongoDB
+      await fetch("http://localhost:4000/api/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          uid: firebaseUser.uid,
+          name,
+          email,
+        }),
+      });
+  
+      // Store the email locally for fetching profile data
+      localStorage.setItem("email", email);
+  
       navigate("/home");
     } catch (err: any) {
       console.error("Error during sign-up:", err);
       setError(err.message);
     }
   };
+  
 
   return (
     <div className="auth-container">
@@ -27,6 +45,12 @@ const SignUp: React.FC = () => {
         <h2>Fantasy Fusion Sign Up</h2>
         <p>Create your account to get started</p>
         {error && <p className="error-message">{error}</p>}
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
         <input
           type="email"
           placeholder="Email"
