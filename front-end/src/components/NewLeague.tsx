@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface NewLeagueProps {
-  onClose: (refresh: boolean) => void; // Update onClose prop to accept a boolean
+  onClose: (refresh: boolean) => void; 
 }
 
 const NewLeague: React.FC<NewLeagueProps> = ({ onClose }) => {
@@ -12,7 +12,7 @@ const NewLeague: React.FC<NewLeagueProps> = ({ onClose }) => {
   const navigate = useNavigate();
 
   const handleCreateLeague = async () => {
-    const email = localStorage.getItem("email"); // Get email from localStorage
+    const email = localStorage.getItem("email");
 
     if (!email) {
       setError("You must be logged in to create a league.");
@@ -20,7 +20,6 @@ const NewLeague: React.FC<NewLeagueProps> = ({ onClose }) => {
     }
 
     try {
-      // Fetch the user data using the email
       const userResponse = await fetch(`http://localhost:4000/api/users?email=${email}`);
       const userData = await userResponse.json();
 
@@ -29,9 +28,8 @@ const NewLeague: React.FC<NewLeagueProps> = ({ onClose }) => {
         return;
       }
 
-      const userId = userData.data[0]._id; // Extract the userId from the response
+      const userId = userData.data[0]._id; 
 
-      // Create the league with the userId
       const leagueResponse = await fetch("http://localhost:4000/api/leagues", {
         method: "POST",
         headers: {
@@ -41,7 +39,7 @@ const NewLeague: React.FC<NewLeagueProps> = ({ onClose }) => {
       });
 
       if (leagueResponse.ok) {
-        onClose(true); // Close the modal and trigger a refresh
+        onClose(true);
       } else {
         const leagueData = await leagueResponse.json();
         setError(leagueData.message || "Failed to create league.");

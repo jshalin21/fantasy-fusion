@@ -19,11 +19,11 @@ const Home: React.FC = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = async (refresh: boolean) => {
     setIsModalOpen(false);
-    if (refresh) await fetchLeagues(); // Refresh leagues after creating a new league
+    if (refresh) await fetchLeagues(); 
   };
 
   const fetchLeagues = async () => {
-    const email = localStorage.getItem("email"); // Get email from localStorage
+    const email = localStorage.getItem("email");
 
     if (!email) {
       setError("You must be logged in to view leagues.");
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setLeagues(data.data); // Set the fetched leagues
+        setLeagues(data.data); 
       } else {
         setError(data.message || "Failed to fetch leagues.");
       }
@@ -69,7 +69,6 @@ const Home: React.FC = () => {
         </div>
         <div className="leagues-grid">
           {error && <p className="error-message">{error}</p>}
-          {/* Render each league card */}
           {leagues.map((league) => (
             <Link to={`/league/${league._id}`} key={league._id} className="league-card-link">
               <div className="league-card">
@@ -86,7 +85,6 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Render the NewLeague modal */}
       {isModalOpen && (
         <div className="modal-overlay">
           <NewLeague onClose={closeModal} />

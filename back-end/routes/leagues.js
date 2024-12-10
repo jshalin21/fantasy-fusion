@@ -7,7 +7,7 @@ module.exports = function (router) {
   const leaguesRoute = router.route("/leagues");
   const leagueIDRoute = router.route("/leagues/:id");
 
-  // GET /leagues - Fetch all leagues or leagues for a specific user
+// GET /leagues - Fetch all leagues or leagues for a specific user
 leaguesRoute.get(async (req, res) => {
     const { email } = req.query;
   
@@ -15,17 +15,14 @@ leaguesRoute.get(async (req, res) => {
       let leagues;
   
       if (email) {
-        // Find the user by email if provided
         const user = await User.findOne({ email });
   
         if (!user) {
           return res.status(404).json({ message: "User not found." });
         }
   
-        // Fetch leagues using the activeLeagues array
         leagues = await League.find({ _id: { $in: user.activeLeagues } });
       } else {
-        // Fetch all leagues if no email is provided
         leagues = await League.find();
       }
   
@@ -43,19 +40,17 @@ leaguesRoute.get(async (req, res) => {
     console.log("Incoming request data:", req.body);
 
     try {
-      // Create the new league with `createdBy`
       const league = new League({ name, description, players, createdBy: userId });
       await league.save();
       console.log("League saved:", league);
 
 
-      // Find the user and update their activeLeagues
       const user = await User.findById(userId);
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
 
-      user.activeLeagues.push(league._id); // Add the league ID to the user's activeLeagues
+      user.activeLeagues.push(league._id); 
       await user.save();
 
       res.status(201).json({
@@ -104,7 +99,6 @@ leaguesRoute.get(async (req, res) => {
         return res.status(404).json({ message: "League not found." });
       }
 
-      // Remove the league ID from the user's activeLeagues
       await User.updateMany({ activeLeagues: id }, { $pull: { activeLeagues: id } });
 
       res.status(200).json({ message: "League deleted successfully", data: league });
@@ -136,7 +130,6 @@ leaguesRoute.get(async (req, res) => {
         });
       }
 
-      // Update league fields
       if (name) league.name = name;
       if (description) league.description = description;
       if (players) league.players = players;

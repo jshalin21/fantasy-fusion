@@ -35,7 +35,7 @@ const debounce = (func: Function, delay: number) => {
 };
 
 const League: React.FC = () => {
-  const { id } = useParams<{ id: string }>(); // Get the league ID from the URL params
+  const { id } = useParams<{ id: string }>(); 
   const navigate = useNavigate();
 
   const [league, setLeague] = useState<League | null>(null);
@@ -74,7 +74,7 @@ const League: React.FC = () => {
         });
 
         if (response.ok) {
-          navigate("/home"); // Navigate back to home after deletion
+          navigate("/home"); 
         } else {
           const data = await response.json();
           setError(data.message || "Failed to delete league.");
@@ -150,11 +150,9 @@ const League: React.FC = () => {
       const updatedPlayers = [...league.players, playerDetails];
       setLeague({ ...league, players: updatedPlayers });
   
-      // Clear the search query
       setSearchQuery("");
       setSearchedPlayers([]);
   
-      // Update the league in the database
       fetch(`http://localhost:4000/api/leagues/${id}`, {
         method: "PUT",
         headers: {
@@ -174,7 +172,6 @@ const League: React.FC = () => {
     const updatedPlayers = league.players.filter((p) => p !== player);
     setLeague({ ...league, players: updatedPlayers });
 
-    // Update the league in the database
     fetch(`http://localhost:4000/api/leagues/${id}`, {
       method: "PUT",
       headers: {
@@ -218,7 +215,7 @@ const League: React.FC = () => {
           <ul className="player-list">
             {searchedPlayers.map((player) => (
               <Link
-              to={`/player/${player.PlayerID}`} // Pass PlayerID in the URL instead of the player's name
+              to={`/player/${player.PlayerID}`} 
               key={player.PlayerID}
               className="player-item"
             >
@@ -226,7 +223,7 @@ const League: React.FC = () => {
               <button
                 className="add-player-button"
                 onClick={(e) => {
-                  e.preventDefault(); // Prevent navigation
+                  e.preventDefault(); 
                   handleAddPlayer(player);
                 }}
               >
@@ -240,21 +237,21 @@ const League: React.FC = () => {
 <h3 className="section-header">League Players</h3>
 <ul className="player-list">
   {filteredPlayers.map((player, index) => {
-    const playerDisplay = player.split(" ").slice(0, -1).join(" "); // Removes the last segment (PlayerID)
+    const playerDisplay = player.split(" ").slice(0, -1).join(" "); 
     const routeParam = encodeURIComponent(player);
 
     return (
       <li key={index} className="player-item">
         <Link
-          to={`/player/${routeParam}`} // Use the full string for the route
-          className="player-item" // Apply custom CSS class
+          to={`/player/${routeParam}`} 
+          className="player-item" 
         >
-          <div className="player-details">{playerDisplay}</div> {/* Styled div */}
+          <div className="player-details">{playerDisplay}</div> 
         </Link>
         <button
           className="remove-player-button"
           onClick={(e) => {
-            e.preventDefault(); // Prevent navigation
+            e.preventDefault(); 
             handleRemovePlayer(player);
           }}
         >

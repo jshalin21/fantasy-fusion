@@ -5,13 +5,12 @@ import "../Profile.css";
 
 const Profile: React.FC = () => {
   const [userInfo, setUserInfo] = useState<{ name: string; email: string } | null>(null);
-  const [profilePic, setProfilePic] = useState<string | null>(null); // Holds the profile picture URL
+  const [profilePic, setProfilePic] = useState<string | null>(null); 
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch user info
     const fetchUserInfo = async () => {
       const loggedInEmail = localStorage.getItem("email");
 
@@ -43,7 +42,6 @@ const Profile: React.FC = () => {
 
     fetchUserInfo();
 
-    // Load profile picture from localStorage
     const storedProfilePic = localStorage.getItem("profilePic");
     if (storedProfilePic) {
       setProfilePic(storedProfilePic);
@@ -58,7 +56,7 @@ const Profile: React.FC = () => {
       reader.onload = () => {
         const result = reader.result as string;
         setProfilePic(result);
-        localStorage.setItem("profilePic", result); // Save to localStorage
+        localStorage.setItem("profilePic", result); 
       };
 
       reader.readAsDataURL(file);

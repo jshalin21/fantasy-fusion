@@ -7,7 +7,7 @@ const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [name, setName] = useState<string>(""); // New state for user's name
+  const [name, setName] = useState<string>("");
   const [error, setError] = useState<string>("");
 
   const handleSignUp = async () => {
@@ -17,7 +17,6 @@ const SignUp: React.FC = () => {
   
       console.log("Firebase user created:", firebaseUser);
   
-      // Save user details to MongoDB
       await fetch("http://localhost:4000/api/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -28,7 +27,6 @@ const SignUp: React.FC = () => {
         }),
       });
   
-      // Store the email locally for fetching profile data
       localStorage.setItem("email", email);
   
       navigate("/home");

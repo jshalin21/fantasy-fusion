@@ -5,9 +5,9 @@ import {auth} from "../firebase";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState<string>(""); // Stores the email input
-  const [password, setPassword] = useState<string>(""); // Stores the password input
-  const [error, setError] = useState<string>(""); // Stores any error messages
+  const [email, setEmail] = useState<string>(""); 
+  const [password, setPassword] = useState<string>(""); 
+  const [error, setError] = useState<string>("");
 
   const handleLogin = async () => {
     try {
@@ -16,7 +16,6 @@ const Login: React.FC = () => {
   
       console.log("Firebase user logged in:", firebaseUser);
   
-      // Store the email locally for fetching profile data
       localStorage.setItem("email", email);
   
       navigate("/home");
@@ -32,7 +31,7 @@ const Login: React.FC = () => {
       <div className="auth-card">
         <h2>Fantasy Fusion Login</h2>
         <p>Enter your credentials to access your account</p>
-        {error && <p className="error-message">{error}</p>} {/* Show error if any */}
+        {error && <p className="error-message">{error}</p>} 
         <input
           type="email"
           placeholder="Email"

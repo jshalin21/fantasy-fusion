@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { useParams, useNavigate } from "react-router-dom";
-import "../player.css"; // Custom CSS file for styling
-
+import "../player.css"; 
 interface GameStats {
   Week: number;
   Opponent: string;
@@ -30,8 +29,8 @@ const Player: React.FC = () => {
       if (!id) return;
 
       const segments = id.split(" ");
-      const playerID = segments.pop(); // Extract PlayerID
-      const name = segments.join(" "); // Extract Player Name
+      const playerID = segments.pop();
+      const name = segments.join(" "); 
       setPlayerName(name);
 
       if (!playerID || isNaN(Number(playerID))) {
@@ -48,7 +47,6 @@ const Player: React.FC = () => {
         if (response.ok) {
           const data = await response.json();
 
-          // Transform data for the table
           const stats = data.map((game: any) => ({
             Week: game.Week,
             Opponent: game.Opponent,
@@ -89,18 +87,14 @@ const Player: React.FC = () => {
     <>
       <Navbar />
       <div className="page-container">
-        {/* Back Button */}
         <button onClick={() => navigate(-1)} className="back-button">
           Back
         </button>
 
-        {/* Player Name */}
         <h1 className="player-name">{playerName}</h1>
 
-        {/* Season Statistics Header */}
         <h2 className="header">Season Statistics</h2>
 
-        {/* Season Stats Table */}
         <div className="stats-table">
           <div className="stats-header">
             <div>Week</div>

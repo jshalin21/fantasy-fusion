@@ -5,7 +5,7 @@ import "../Navbar.css";
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
-  const auth = getAuth(); // Get the Firebase auth instance
+  const auth = getAuth(); 
 
   const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
     try {
       await signOut(auth);
       console.log("Sign-out successful.");
-      navigate("/"); // Redirect to the login page after successful logout
+      navigate("/");
     } catch (error: any) {
       console.error("Error during sign-out:", error.message);
     }
@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-    setHidden(currentScrollY > lastScrollY); // Hide navbar when scrolling down
+    setHidden(currentScrollY > lastScrollY); 
     setLastScrollY(currentScrollY);
   };
 

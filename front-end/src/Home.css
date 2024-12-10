@@ -1,16 +1,14 @@
-/* General Styling */
 body {
     margin: 0;
     font-family: "Arial", sans-serif;
-    background-color: #121212; /* Black */
-    color: #ffffff; /* White */
+    background-color: #121212; 
+    color: #ffffff; 
   }
   
-  /* Hero Section */
   .hero-section {
     position: relative;
     width: 100%;
-    height: 100vh; /* Full viewport height */
+    height: 100vh; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,17 +36,16 @@ body {
   .home-header {
     font-size: 4rem;
     font-weight: bold;
-    color: #d31919; /* NFL Blue */
+    color: #d31919; 
     margin-bottom: 10px;
   }
   
   .hero-description {
     font-size: 1.5rem;
     font-weight: 300;
-    color: #e0e0e0; /* Light Gray */
+    color: #e0e0e0; 
   }
   
-  /* Leagues Grid */
   .leagues-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -57,10 +54,9 @@ body {
     padding: 20px;
   }
   
-  /* League Card Styling */
   .league-card {
-    background-color: #282828; /* Dark Gray */
-    border: 2px solid #950b0b; /* NFL Red */
+    background-color: #282828; 
+    border: 2px solid #950b0b; 
     border-radius: 15px;
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -75,18 +71,17 @@ body {
   
   .league-name {
     font-size: 1.5rem;
-    color: #ffffff; /* White */
+    color: #ffffff;
     margin-bottom: 10px;
   }
   
   .league-description {
     font-size: 1rem;
-    color: #a5acaf; /* Metallic Silver */
+    color: #a5acaf;
   }
   
-  /* Add League Button */
   .add-league-card {
-    background-color: #a60606; /* NFL Bright Red */
+    background-color: #a60606; 
     color: white;
     font-size: 1.25rem;
     font-weight: bold;
@@ -101,7 +96,7 @@ body {
   }
   
   .add-league-card:hover {
-    background-color: #740101; /* Darker Red */
+    background-color: #740101; 
     transform: translateY(-3px);
   }
   
@@ -112,23 +107,21 @@ body {
     margin-top: 20px;
   }
   
-  /* Modal Overlay */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Dimmed background */
+    background-color: rgba(0, 0, 0, 0.8); 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure it stays on top */
+    z-index: 1000; 
   }
   
-  /* Modal Form Container */
   .form-container {
-    background-color: #1e1e1e; /* Dark Gray */
+    background-color: #1e1e1e;
     color: white;
     padding: 30px 40px;
     border-radius: 10px;
@@ -140,7 +133,6 @@ body {
     animation: fadeIn 0.3s ease-in-out;
   }
   
-  /* Input and Textarea Styles */
   .form-container input{
     width: 100%;
     margin: 10px 0;
@@ -154,10 +146,9 @@ body {
   
   .form-container input:focus{
     outline: none;
-    border-color: #950b0b; /* Highlight color */
+    border-color: #950b0b; 
   }
   
-  /* Modal Actions */
   .modal-actions {
     display: flex;
     justify-content: space-between;
@@ -165,7 +156,7 @@ body {
   }
   
   .modal-actions button {
-    background-color: #950b0b; /* NFL Red */
+    background-color: #950b0b; 
     color: white;
     border: none;
     padding: 10px 20px;
@@ -175,10 +166,9 @@ body {
   }
   
   .modal-actions button:hover {
-    background-color: #a11212; /* Darker Red */
+    background-color: #a11212; 
   }
   
-  /* Animation */
   @keyframes fadeIn {
     from {
       opacity: 0;

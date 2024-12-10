@@ -3,7 +3,6 @@ const secrets = require("../config/secrets");
 const User = require("../models/user");
 
 module.exports = function (router) {
-  // Define routes for /users and /users/:id
   const usersRoute = router.route("/users");
   const usersIDRoute = router.route("/users/:id");
 
@@ -13,7 +12,6 @@ module.exports = function (router) {
       const { email } = req.query;
   
       if (email) {
-        // Fetch user by email
         const user = await User.findOne({ email });
   
         if (!user) {
@@ -25,11 +23,10 @@ module.exports = function (router) {
   
         return res.status(200).json({
           message: "User retrieved successfully",
-          data: [user], // Return as an array to maintain consistency
+          data: [user], 
         });
       }
   
-      // Fetch all users (if no email is provided)
       const where = req.query.where ? JSON.parse(req.query.where) : {};
       const sort = req.query.sort ? JSON.parse(req.query.sort) : {};
       const select = req.query.select ? JSON.parse(req.query.select) : {};
@@ -138,7 +135,6 @@ module.exports = function (router) {
         });
       }
 
-      // Update user fields
       if (name) user.name = name;
       if (email) user.email = email;
 

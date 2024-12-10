@@ -1,5 +1,5 @@
 button {
-  background-color: #203e98; /* NFL Blue */
+  background-color: #203e98;
   color: white;
   border: none;
   padding: 15px 20px;
@@ -9,7 +9,7 @@ button {
 }
 
 button:hover {
-  background-color: #122c70; /* Darker NFL Blue */
+  background-color: #122c70; 
   opacity: 0.9;
 }
 
@@ -18,9 +18,9 @@ input {
   margin: 10px 0;
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid #950b0b; /* NFL Red */
+  border: 1px solid #950b0b; 
   border-radius: 5px;
-  background-color: #282828; /* Dark Gray */
+  background-color: #282828; 
   color: white;
   font-size: 16px;
 }
@@ -37,11 +37,11 @@ input {
   margin: 20px 0;
   font-size: 32px;
   font-weight: bold;
-  color: #a5acaf; /* Metallic Silver */
+  color: #a5acaf; 
 }
 
 .card {
-  background-color: #282828; /* Dark Gray */
+  background-color: #282828; 
   padding: 20px;
   margin: 10px 0;
   border-radius: 10px;
@@ -49,14 +49,12 @@ input {
   cursor: pointer;
   width: 80%;
   max-width: 800px;
-  border: 1px solid #203e98; /* NFL Blue */
+  border: 1px solid #203e98; 
 }
 
 .card:hover {
-  background-color: #333333; /* Lighter Gray */
+  background-color: #333333; 
 }
-
-
 
 .page-container {
   padding: 20px;
@@ -81,7 +79,6 @@ input {
 }
 
 
-/* Body styling for the dark theme */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -89,7 +86,6 @@ body {
   color: #ffffff;
 }
 
-/* Centered card container */
 .login-container {
   display: flex;
   justify-content: center;
@@ -98,7 +94,6 @@ body {
   background-color: #121212;
 }
 
-/* Login card */
 .login-card {
   background-color: #1e1e1e;
   padding: 30px;
@@ -108,21 +103,18 @@ body {
   text-align: center;
 }
 
-/* Header for login card */
 .login-card h2 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-/* Subtext below the title */
 .login-card p {
   font-size: 14px;
   color: #bbbbbb;
   margin-bottom: 30px;
 }
 
-/* Input fields styling */
 .login-card input {
   width: 100%;
   padding: 12px;
@@ -135,12 +127,10 @@ body {
   outline: none;
 }
 
-/* Input focus effect */
 .login-card input:focus {
   border: 1px solid #950b0b;
 }
 
-/* Buttons styling */
 .login-card button {
   background-color: #a00f0f;
   color: white;
@@ -153,12 +143,10 @@ body {
   transition: background-color 0.2s ease-in-out;
 }
 
-/* Button hover effect */
 .login-card button:hover {
   background-color: #a11212;
 }
 
-/* Link for "Forgot Password?" */
 .login-card .forgot-password {
   display: block;
   margin-top: 15px;
@@ -172,7 +160,6 @@ body {
 }
 
 
-/* Player list container */
 .player-list {
   list-style: none;
   padding: 0;
@@ -180,7 +167,6 @@ body {
   width: 100%;
 }
 
-/* Individual player items */
 .player-item {
   display: flex;
   align-items: center;
@@ -191,7 +177,6 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Player image */
 .player-image {
   width: 50px;
   height: 50px;
@@ -199,7 +184,6 @@ body {
   margin-right: 15px;
 }
 
-/* Player info */
 .player-info h3 {
   margin: 0;
   font-size: 18px;
@@ -212,7 +196,6 @@ body {
   color: #bbbbbb;
 }
 
-/* Search bar styling */
 .full-width {
   width: 100%;
   padding: 12px;
@@ -230,7 +213,6 @@ body {
 }
 
 
-/* General styling */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -238,7 +220,6 @@ body {
   color: #ffffff;
 }
 
-/* Log In and Sign Up container */
 .auth-container {
   display: flex;
   flex-direction: column;
@@ -312,7 +293,6 @@ body {
 }
 
 
-/* Page container styling */
 .page-container {
   padding: 20px;
   display: flex;
@@ -322,7 +302,6 @@ body {
   overflow-y: auto;
 }
 
-/* Form container */
 .form-container {
   background-color: #282828;
   padding: 30px;
@@ -333,7 +312,6 @@ body {
   text-align: center;
 }
 
-/* Form styling */
 .form {
   display: flex;
   flex-direction: column;
@@ -355,7 +333,6 @@ body {
   outline: none;
 }
 
-/* Button styling */
 .button {
   background-color: #b91d1d;
   color: white;
