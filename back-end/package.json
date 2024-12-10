@@ -6,7 +6,8 @@
     "Shalin Joshi <shalinj2@illinois.edu>"
   ],
   "scripts": {
-    "start": "nodemon --exec node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "babel": {
     "presets": [
@@ -16,13 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/uiuc-web-programming/mp3_starter_17.git"
+    "url": "https://github.com/jshalin21/fantasy-fusion.git"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "mongodb": "^6.11.0",
-    "mongoose": "^5.13.22",
-    "nodemon": "^1.11.0"
+    "mongoose": "^5.13.22"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }
