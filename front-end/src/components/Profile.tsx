@@ -21,7 +21,7 @@ const Profile: React.FC = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:4000/api/users?email=${loggedInEmail}`);
+        const response = await fetch(`https://fantasy-fusion.vercel.app/users?email=${loggedInEmail}`);
         const data = await response.json();
 
         if (response.ok) {

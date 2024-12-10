@@ -47,7 +47,7 @@ const League: React.FC = () => {
   useEffect(() => {
     const fetchLeague = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/leagues/${id}`);
+        const response = await fetch(`https://fantasy-fusion.vercel.app/api/leagues/${id}`);
         const data = await response.json();
 
         if (response.ok) {
@@ -69,7 +69,7 @@ const League: React.FC = () => {
     const confirmed = window.confirm(`Are you sure you want to delete the league "${league.name}"?`);
     if (confirmed) {
       try {
-        const response = await fetch(`http://localhost:4000/api/leagues/${id}`, {
+        const response = await fetch(`https://fantasy-fusion.vercel.app/api/leagues/${id}`, {
           method: "DELETE",
         });
 
@@ -153,7 +153,7 @@ const League: React.FC = () => {
       setSearchQuery("");
       setSearchedPlayers([]);
   
-      fetch(`http://localhost:4000/api/leagues/${id}`, {
+      fetch(`https://fantasy-fusion.vercel.app/api/leagues/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -172,7 +172,7 @@ const League: React.FC = () => {
     const updatedPlayers = league.players.filter((p) => p !== player);
     setLeague({ ...league, players: updatedPlayers });
 
-    fetch(`http://localhost:4000/api/leagues/${id}`, {
+    fetch(`https://fantasy-fusion.vercel.app/api/leagues/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -31,7 +31,7 @@ const Home: React.FC = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:4000/api/leagues?email=${email}`);
+      const response = await fetch(`https://fantasy-fusion.vercel.app/api/leagues?email=${email}`);
       const data = await response.json();
 
       if (response.ok) {

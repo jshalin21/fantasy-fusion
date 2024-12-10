@@ -20,7 +20,7 @@ const NewLeague: React.FC<NewLeagueProps> = ({ onClose }) => {
     }
 
     try {
-      const userResponse = await fetch(`http://localhost:4000/api/users?email=${email}`);
+      const userResponse = await fetch(`https://fantasy-fusion.vercel.app/api/users?email=${email}`);
       const userData = await userResponse.json();
 
       if (!userResponse.ok || !userData.data || userData.data.length === 0) {
@@ -30,7 +30,7 @@ const NewLeague: React.FC<NewLeagueProps> = ({ onClose }) => {
 
       const userId = userData.data[0]._id; 
 
-      const leagueResponse = await fetch("http://localhost:4000/api/leagues", {
+      const leagueResponse = await fetch("https://fantasy-fusion.vercel.app/api/leagues", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

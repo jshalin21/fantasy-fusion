@@ -17,7 +17,7 @@ const SignUp: React.FC = () => {
   
       console.log("Firebase user created:", firebaseUser);
   
-      await fetch("http://localhost:4000/api/users", {
+      await fetch("https://fantasy-fusion.vercel.app/api/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
