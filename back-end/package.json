@@ -1,10 +1,9 @@
 {
-  "name": "mp3_starter_19",
+  "name": "fantasy-fusion-backend",
   "version": "1.0.0",
-  "description": "MP3 Starter for CS498RK Spring 2019",
+  "description": "Fantasy Fusion Backend",
   "authors": [
-    "James Lee <jwlee11@illinois.edu>",
-    "Sujay Khandekar <khandek2@illinois.edu>"
+    "Shalin Joshi <shalinj2@illinois.edu>"
   ],
   "scripts": {
     "start": "nodemon --exec node server.js"
