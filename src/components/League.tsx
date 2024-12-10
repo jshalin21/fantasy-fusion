@@ -144,7 +144,7 @@ const League: React.FC = () => {
   const handleAddPlayer = (player: Player) => {
     if (!league) return;
   
-    const playerDetails = `${player.FirstName} ${player.LastName} - ${player.Position} (${player.Team}) - Fantasy Points: ${player.FantasyPoints || 0}`;
+    const playerDetails = `${player.FirstName} ${player.LastName} - ${player.Position} (${player.Team}) - Fantasy Points: ${player.FantasyPoints || 0} ${player.PlayerID}`;
   
     if (!league.players.includes(playerDetails)) {
       const updatedPlayers = [...league.players, playerDetails];
@@ -218,46 +218,54 @@ const League: React.FC = () => {
           <ul className="player-list">
             {searchedPlayers.map((player) => (
               <Link
-                to={`/player/${player.PlayerID}`}
-                key={player.PlayerID}
-                className="player-item"
+              to={`/player/${player.PlayerID}`} // Pass PlayerID in the URL instead of the player's name
+              key={player.PlayerID}
+              className="player-item"
+            >
+              {player.FirstName} {player.LastName} - {player.Position} ({player.Team}) - Fantasy Points: {player.FantasyPoints}
+              <button
+                className="add-player-button"
+                onClick={(e) => {
+                  e.preventDefault(); // Prevent navigation
+                  handleAddPlayer(player);
+                }}
               >
-                {player.FirstName} {player.LastName} - {player.Position} ({player.Team}) - Fantasy Points: {player.FantasyPoints}
-                <button
-                  className="add-player-button"
-                  onClick={(e) => {
-                    e.preventDefault(); // Prevent navigation
-                    handleAddPlayer(player);
-                  }}
-                >
-                  Add to League
-                </button>
-              </Link>
+                Add to League
+              </button>
+            </Link>
             ))}
           </ul>
         )}
 
-        <h3 className="section-header">League Players</h3>
-        <ul className="player-list">
-          {filteredPlayers.map((player, index) => (
-            <Link
-              to={`/player/${encodeURIComponent(player)}`}
-              key={index}
-              className="player-item"
-            >
-              {player}
-              <button
-                className="remove-player-button"
-                onClick={(e) => {
-                  e.preventDefault(); // Prevent navigation
-                  handleRemovePlayer(player);
-                }}
-              >
-                Remove
-              </button>
-            </Link>
-          ))}
-        </ul>
+<h3 className="section-header">League Players</h3>
+<ul className="player-list">
+  {filteredPlayers.map((player, index) => {
+    const playerDisplay = player.split(" ").slice(0, -1).join(" "); // Removes the last segment (PlayerID)
+    const routeParam = encodeURIComponent(player);
+
+    return (
+      <li key={index} className="player-item">
+        <Link
+          to={`/player/${routeParam}`} // Use the full string for the route
+          className="player-item" // Apply custom CSS class
+        >
+          <div className="player-details">{playerDisplay}</div> {/* Styled div */}
+        </Link>
+        <button
+          className="remove-player-button"
+          onClick={(e) => {
+            e.preventDefault(); // Prevent navigation
+            handleRemovePlayer(player);
+          }}
+        >
+          Remove
+        </button>
+      </li>
+    );
+  })}
+</ul>
+
+
 
         <button onClick={handleDeleteLeague} className="delete-league-button">
           Delete League

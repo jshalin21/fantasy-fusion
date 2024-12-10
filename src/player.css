@@ -1,0 +1,73 @@
+.page-container {
+    padding: 20px;
+    background-color: #1e1e1e;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+  }
+  
+  .back-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .back-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .player-name {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  
+  .header {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .stats-table {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 5px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .stats-header {
+    display: contents;
+    background-color: #333;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .stats-row {
+    display: contents;
+    background-color: #444;
+    color: #fff;
+  }
+  
+  .stats-row:nth-child(even) {
+    background-color: #555;
+  }
+  
+  .stats-row div,
+  .stats-header div {
+    padding: 10px;
+    border: 1px solid #666;
+  }
+  
+  .stats-row:hover {
+    background-color: #666;
+  }
+  

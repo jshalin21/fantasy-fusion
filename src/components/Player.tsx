@@ -1,83 +1,139 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import "../player.css"; // Custom CSS file for styling
 
-interface Player {
-  name: string;
-  team: string;
-  points: number;
-  stats: string;
+interface GameStats {
+  Week: number;
+  Opponent: string;
+  FantasyPoints: number;
+  PassingYards: number;
+  PassingTouchdowns: number;
+  PassingInterceptions: number;
+  RushingYards: number;
+  RushingTouchdowns: number;
+  Sacks: number;
+  Fumbles: number;
+  FumblesLost: number;
 }
 
 const Player: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const [seasonStats, setSeasonStats] = useState<GameStats[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [playerName, setPlayerName] = useState<string>("");
 
-  const playerData: Record<string, Player> = {
-    1: { name: "Player 1", team: "Team A", points: 50, stats: "Details about Player 1's performance." },
-    2: { name: "Player 2", team: "Team B", points: 30, stats: "Details about Player 2's performance." },
-    3: { name: "Player 3", team: "Team C", points: 70, stats: "Details about Player 3's performance." },
-    4: { name: "Player 4", team: "Team D", points: 20, stats: "Details about Player 4's performance." },
-  };
+  useEffect(() => {
+    const fetchSeasonStats = async () => {
+      if (!id) return;
 
-  const player = id && playerData[id];
+      const segments = id.split(" ");
+      const playerID = segments.pop(); // Extract PlayerID
+      const name = segments.join(" "); // Extract Player Name
+      setPlayerName(name);
 
-  if (!player) {
-    return (
-      <>
-        <Navbar />
-        <div className="page-container" style={styles.pageContainer}>
-          <h2 style={styles.header}>Player not found</h2>
-        </div>
-      </>
-    );
+      if (!playerID || isNaN(Number(playerID))) {
+        setError("Invalid PlayerID in route.");
+        setLoading(false);
+        return;
+      }
+
+      const endpoint = `https://api.sportsdata.io/v3/nfl/stats/json/PlayerGameStatsBySeason/2024/${playerID}/all?key=abe55e731fca473dbc718d18afa0c089`;
+
+      try {
+        const response = await fetch(endpoint);
+
+        if (response.ok) {
+          const data = await response.json();
+
+          // Transform data for the table
+          const stats = data.map((game: any) => ({
+            Week: game.Week,
+            Opponent: game.Opponent,
+            FantasyPoints: game.FantasyPoints,
+            PassingYards: game.PassingYards,
+            PassingTouchdowns: game.PassingTouchdowns,
+            PassingInterceptions: game.PassingInterceptions,
+            RushingYards: game.RushingYards,
+            RushingTouchdowns: game.RushingTouchdowns,
+            Sacks: game.PassingSacks,
+            Fumbles: game.Fumbles,
+            FumblesLost: game.FumblesLost,
+          }));
+
+          setSeasonStats(stats);
+        } else {
+          setError("Failed to fetch season stats.");
+        }
+      } catch (err) {
+        setError("An error occurred while fetching the player's stats.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSeasonStats();
+  }, [id]);
+
+  if (loading) {
+    return <p>Loading player stats...</p>;
+  }
+
+  if (error) {
+    return <p style={{ color: "red" }}>{error}</p>;
   }
 
   return (
     <>
       <Navbar />
-      <div className="page-container" style={styles.pageContainer}>
-        <h2 style={styles.header}>{player.name}</h2>
-        <div style={styles.card}>
-          <p style={styles.text}>Team: {player.team}</p>
-          <p style={styles.text}>Points: {player.points}</p>
-          <p style={styles.text}>Stats: {player.stats}</p>
+      <div className="page-container">
+        {/* Back Button */}
+        <button onClick={() => navigate(-1)} className="back-button">
+          Back
+        </button>
+
+        {/* Player Name */}
+        <h1 className="player-name">{playerName}</h1>
+
+        {/* Season Statistics Header */}
+        <h2 className="header">Season Statistics</h2>
+
+        {/* Season Stats Table */}
+        <div className="stats-table">
+          <div className="stats-header">
+            <div>Week</div>
+            <div>Opponent</div>
+            <div>Fantasy Points</div>
+            <div>Passing Yards</div>
+            <div>Passing TDs</div>
+            <div>INTs</div>
+            <div>Rushing Yards</div>
+            <div>Rushing TDs</div>
+            <div>Sacks</div>
+            <div>Fumbles</div>
+            <div>Fumbles Lost</div>
+          </div>
+          {seasonStats.map((game, index) => (
+            <div key={index} className="stats-row">
+              <div>{game.Week}</div>
+              <div>{game.Opponent}</div>
+              <div>{game.FantasyPoints.toFixed(2)}</div>
+              <div>{game.PassingYards}</div>
+              <div>{game.PassingTouchdowns}</div>
+              <div>{game.PassingInterceptions}</div>
+              <div>{game.RushingYards}</div>
+              <div>{game.RushingTouchdowns}</div>
+              <div>{game.Sacks}</div>
+              <div>{game.Fumbles}</div>
+              <div>{game.FumblesLost}</div>
+            </div>
+          ))}
         </div>
       </div>
     </>
   );
-};
-
-const styles = {
-  pageContainer: {
-    display: "flex",
-    flexDirection: "column" as const,
-    alignItems: "center",
-    justifyContent: "center",
-    minHeight: "100vh",
-    backgroundColor: "#000", // Black background
-    color: "#fff", // White text for contrast
-    padding: "20px",
-  },
-  header: {
-    fontSize: "24px",
-    fontWeight: "bold",
-    color: "#fff",
-    marginBottom: "20px",
-  },
-  card: {
-    maxWidth: "600px",
-    width: "100%",
-    backgroundColor: "#1a1a1a", // Dark card background
-    borderRadius: "10px",
-    padding: "20px",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)",
-    textAlign: "center" as const,
-  },
-  text: {
-    fontSize: "18px",
-    color: "#d1d1d1", // Light gray text
-    margin: "10px 0",
-  },
 };
 
 export default Player;
